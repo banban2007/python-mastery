@@ -1,0 +1,8 @@
+1. Abstract class can have both normal methods and abstract methods.
+
+2. Template for other classes and providing complete implementation. 
+
+3. Abstract class can’t create object
+
+4. If any abstract method is not implemented by the derived class
+Python throws an error.

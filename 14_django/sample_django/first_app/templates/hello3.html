@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>{{number}}</p>
+    <p>{{ username }}</p>
+    {% for languages in languages %}
+    <p>{{ languages }}</p>
+    {% endfor %}
+
+    <hr>
+    <h1>{{mgmg.name}}</h1>
+    <p>{{mgmg.id}}</p>
+    <p>{{mgmg.address}}</p>
+
+    <hr>
+    {% if userdata %}
+    {% for user in userdata %}
+    <h1>username : {{user.name}}</h1>
+    {% endfor %}
+    {% endif %}
+    
+</body>
+</html>

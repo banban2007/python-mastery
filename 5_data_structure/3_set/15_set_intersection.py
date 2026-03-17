@@ -1,0 +1,7 @@
+s1 = {"a","b","c","d"}
+s2 = {"e","f","c","d"}
+print(s1&s2)
+
+r = s1.intersection(s2)
+print(r)
+print(s1)

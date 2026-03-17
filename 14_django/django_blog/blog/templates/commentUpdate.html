@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+<form method="POST" action="/blog/cmt/update/{{comment.id}}/{{post_id}}/">
+{% csrf_token %}
+
+    <!-- {% for comment in comments %}
+    <p style="margin-top: 2rem; border: 1px solid black ; padding: 1rem 2rem; border-radius: 40px;">{{ comment }}</p>
+    
+    {% endfor %} -->
+    <div class="input-group">
+        <input type="text" name="content" class="form-control"
+        value="{{comment.content}}">
+        <button class="btn btn-primary" type="submit">Comment</button>
+    </div>
+</form>
+{% endif %}
+
+
+{% endblock %}

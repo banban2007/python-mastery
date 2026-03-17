@@ -1,0 +1,23 @@
+>>> from blog.models import PostModel
+>>> PostModel.objects.all()
+>>> PostModel.objects.all().values()
+>>> PostModel.objects.all().values().get(id=15)
+>>> PostModel.objects.all().values().filter(id=15)
+>>> posts = PostModel.objects.get(id=15)
+>>> print(posts.title, posts.body, posts.created_at)
+>>> posts = PostModel.objects.filter(id=15)
+>>> for i in posts:print(i.title, i.body, i.created_at);
+(or)
+>>> posts[0].title
+
+>>>PostModel.objects.create(title="test",body="test")
+
+>>> PostModel.objects.filter(id=1).update(title="updatetest")
+>>> posts = PostModel.objects.get(id=15)
+>>> posts.title = "changetest"
+>>> posts.save()
+>>> posts = PostModel.objects.filter(id=15)
+>>> for i in posts:i.title="test2";i.save();
+
+>>> PostModel.objects.all().delete()
+>>> PostModel.objects.get(id=15).delete()

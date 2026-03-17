@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% load humanize %}
+
+<h2>Post Detail</h2>
+<h3> {{ post.title }}</h3>
+<p>{{ post.body }}</p>
+    <img src="/media/{{post.image}}" style="height: 300px;"/>
+
+<p>{{ post.created_at }}</p>
+
+<p class="card-text">
+    <small class="text-muted">
+        By {{post.author}}, {{ post.created_at | naturaltime }}
+    </small>
+</p>
+{% if post.author_id == user.id %}
+
+<a href="/blog/delete/{{post.id}}/"><button class ="btn-danger" onclick="return confirm('Are You Sure?');">Delete</button></a>
+<a href="/blog/update/{{post.id}}/"><button>Update</button></a>
+{% endif %}
+<button class="btn btn-danger"><a href="/blog/List">back</a></button>
+
+{% if comments %} 
+<ul id="Commentlist" class="list-group list-group-flush">
+    {% for comment in comments %}
+    <li class="list-group-item d-flex justify-content-between">
+        <p><span class="badge bg-info">{{comment.author}}</span>{{comment.content}}</p>
+        {% if comment.author_id == user.id %}
+        <span>
+            <a href="/blog/cmt/update/{{comment.id}}/{{post.id}}/">
+                <i class="bi bi-pencil-square" style="font-size: 30px;"></i>
+            </a>
+            <!-- &ndsp;&ndsp;&ndsp; -->
+            <a href="/blog/cmt/delete/{{comment.id}}/{{post.id}}/" onclick="return confirm('Your Sure?')">
+                <i class="bi bi-trash"style="font-size: 30px;" ></i>
+            </a>
+        </span>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+    {% else %}
+    <li class="list-group-item">
+        <h5>Nothing To Show Comment !</h5>
+    </li>
+
+
+{% endif %}
+
+{% if user.is_authenticated %}
+<form method="POST" action="/blog/cmt/create/{{post.id}}/">
+{% csrf_token %}
+
+    <!-- {% for comment in comments %}
+    <p style="margin-top: 2rem; border: 1px solid black ; padding: 1rem 2rem; border-radius: 40px;">{{ comment }}</p>
+    
+    {% endfor %} -->
+    <div class="input-group">
+        <input type="text" name="content" class="form-control"
+        placeholder="Write a comment...">
+        <button class="btn btn-primary" type="submit">Comment</button>
+    </div>
+</form>
+{% endif %}
+
+{% endblock %}

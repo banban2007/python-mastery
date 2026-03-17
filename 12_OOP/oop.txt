@@ -1,0 +1,8 @@
+#oop.txt
+
+1.Class         -> object implementation
+2.Object        -> class instance
+3.Inheritance   -> extends (super - sub) (base - drived) (parent - child)
+4.Poly-morphism -> many form (overloading, overriding)
+5.Encapsulation -> information hiding (private, protected)
+6.Abstraction   -> prototype (frame)

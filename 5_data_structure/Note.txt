@@ -1,0 +1,19 @@
+	      C  R  U  D  Types  	Element
+String    0  1  0  0   i
+
+
+List  []  1  1  1  1   m	i or m
+
+Tuple ()  0  1  0  0   i 	i or m
+(read only)
+
+Set   {}  1  0  0  1   m	i
+
+Dict  {:} 1  1  1  1   m	key i and value i or m
+
+#i = immutable,unchangeable,cannot modified
+#m = mutable,changeable,can add or remove
+
+x=create
+r=read
+w=write

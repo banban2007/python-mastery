@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}
+Update Post
+{% endblock %}
+{% block body %}
+<div class="container mt-5 pt-5 mb-5 d-flex justify-content-center">
+<div class="card " style="width: 500px">
+<div class="card-body">
+<form method="POST" action="/blog/update/{{post.id}}/" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="col-12">
+<label class="form-label">Title</label>
+<input type="text" name="title" class="form-control" placeholder="title" value="{{post.title}}" required>
+</div>
+<div class="col-12">
+<label class="form-label">Body</label>
+<input type="text" name="body" class="form-control" placeholder="body" value="{{post.body}}" required>
+</div>
+<div class="col-12">
+<label class="form-label">Image</label>
+<input type="file" name="image" class="form-control" value="{{post.image}}">
+{% if post.image %}
+<p>File uploaded at: <a href="{{post.image.url}}">{{post.image}}</a></p>
+{% endif %}
+</div><br>
+
+<div class="col-12">
+    <label class="form-label">Category</label>
+    <select name="category" id="" class="form-control" multiple>
+        {% for category in categories %}
+        <option value="{{ category.id }}" {% if category in post.category.all %} selected {% endif %}>{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    </div><br>
+    
+<div class="col-12">
+    <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>
+</div>
+</div>
+</div>
+{% endblock %}
